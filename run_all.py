@@ -1,10 +1,10 @@
 """One command: download (in parallel), train, verify, write the slide-4 headline and maps.
 
 Kaggle (one cell, Internet ON):
-    !git clone -q https://github.com/shreyashsri79/081 && cd 081 && pip install -q gcsfs "zarr>=2.18,<3" && python run_all.py
+    !git clone -q https://github.com/codeWith-hmnsh/samanway-project && cd samanway-project && pip install -q gcsfs "zarr>=2.18,<3" && python run_all.py
 
 Laptop:
-    git clone https://github.com/shreyashsri79/081 && cd 081 && pip install -r requirements.txt && python run_all.py
+    git clone https://github.com/codeWith-hmnsh/samanway-project && cd samanway-project && pip install -r requirements.txt && python run_all.py
 
 Re-running skips files already downloaded. Quick test: python run_all.py --max-inits 5 --out test_out
 On Kaggle, attach a previous run's output (Add Input -> Your Work) and its cache/ files are reused.

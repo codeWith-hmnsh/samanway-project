@@ -3,3 +3,4 @@
 ecmwf-opendata
 cfgrib
 eccodes
+pydantic>=2.7

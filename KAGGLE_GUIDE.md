@@ -8,7 +8,7 @@ waiting for downloads. Nothing here needs a GPU.
 New Kaggle notebook → Settings: Internet **On**, Accelerator **None** → paste into one cell → **Save Version → Save & Run All**:
 
 ```
-!git clone -q https://github.com/shreyashsri79/081 && cd 081 && pip install -q gcsfs "zarr>=2.18,<3" && python run_all.py
+!git clone -q https://github.com/codeWith-hmnsh/samanway-project && cd samanway-project && pip install -q gcsfs "zarr>=2.18,<3" && python run_all.py
 ```
 
 It downloads 10 files in parallel, trains, verifies, and prints the slide-4 headline. Outputs land in
@@ -18,7 +18,7 @@ What runs where:
 
 ```mermaid
 flowchart LR
-    GH["GitHub repo<br/>shreyashsri79/081<br/>(blend/ code + notebooks)"] -->|git clone| NB0
+    GH["GitHub repo<br/>codeWith-hmnsh/samanway-project<br/>(blend/ code + notebooks)"] -->|git clone| NB0
     NB0["00_probe<br/>~5 min"] --> NB1["01_ingest<br/>~1–2 h<br/>writes cache/"]
     NB1 -->|"notebook output<br/>attached as input"| NB3["03_train_verify<br/>~5–10 min<br/>writes artifacts/"]
     NB3 --> OUT["headline.txt · scorecard_S1.csv<br/>figures/*.png · weights_*.nc"]
@@ -30,9 +30,9 @@ flowchart LR
 
 ### 1.1 Put the code on GitHub
 
-The notebooks download the code with `git clone https://github.com/shreyashsri79/081`. The `blend/` folder and
+The notebooks download the code with `git clone https://github.com/codeWith-hmnsh/samanway-project`. The `blend/` folder and
 `notebooks/` folder must therefore be pushed to the `main` branch first. Check this in a browser:
-`https://github.com/shreyashsri79/081/tree/main/blend` must show `config.py`, `sources.py`, and the other files.
+`https://github.com/codeWith-hmnsh/samanway-project/tree/main/blend` must show `config.py`, `sources.py`, and the other files.
 
 ### 1.2 Create and verify a Kaggle account
 
@@ -157,7 +157,7 @@ Same fast-path notebook, two runs in one cell so both scorecards land in the sam
 writes the bundles (BACKEND_BUILD_PLAN.md T11):
 
 ```
-!git clone -q https://github.com/shreyashsri79/081 && cd 081 && pip install -q gcsfs "zarr>=2.18,<3" fastapi pydantic && \
+!git clone -q https://github.com/codeWith-hmnsh/samanway-project && cd samanway-project && pip install -q gcsfs "zarr>=2.18,<3" fastapi pydantic && \
  python run_all.py --set S1 --vars t2m wind mslp && \
  python run_all.py --set S2 --vars rain t2m wind --export-runs auto
 ```
@@ -180,13 +180,13 @@ After a training run, in the same notebook (or with that run's output attached a
 daily live run uses, including the extreme-event tables:
 
 ```
-!cd 081 && python -m blend.live build-model --art /kaggle/working/artifacts --cache /kaggle/working/cache && cp models/live_model.nc /kaggle/working/
+!cd samanway-project && python -m blend.live build-model --art /kaggle/working/artifacts --cache /kaggle/working/cache && cp models/live_model.nc /kaggle/working/
 ```
 
 With a previous run attached instead of re-training:
 
 ```
-!rm -rf 081 && git clone -q https://github.com/shreyashsri79/081 && cd 081 && pip install -q gcsfs "zarr>=2.18,<3" &&  python -m blend.live build-model --art "$(dirname $(find /kaggle/input -type d -path '*artifacts/S1' | head -1))"    --cache "$(dirname $(find /kaggle/input -name 'truth_era5.nc' | head -1))" && cp models/live_model.nc /kaggle/working/
+!rm -rf samanway-project && git clone -q https://github.com/codeWith-hmnsh/samanway-project && cd samanway-project && pip install -q gcsfs "zarr>=2.18,<3" &&  python -m blend.live build-model --art "$(dirname $(find /kaggle/input -type d -path '*artifacts/S1' | head -1))"    --cache "$(dirname $(find /kaggle/input -name 'truth_era5.nc' | head -1))" && cp models/live_model.nc /kaggle/working/
 ```
 
 Download `live_model.nc`, put it in the repo's `models/`, commit. The next live run uses it.

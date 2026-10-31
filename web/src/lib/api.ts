@@ -15,7 +15,8 @@ const synth = () => (synthMod ??= import('./synthetic'))
 let mode: Promise<'http' | 'synthetic'> | null = null
 function source() {
   // The engine counts only if it answers with JSON and has at least one run to show.
-  mode ??= fetch('/api/runs', { signal: AbortSignal.timeout(1500) })
+  // A deployed API can cold-start: wait for it, or visitors would silently get the synthetic source.
+  mode ??= fetch('/api/runs', { signal: AbortSignal.timeout(import.meta.env.DEV ? 1500 : 30000) })
     .then(async (r) => {
       if (!r.ok || !r.headers.get('content-type')?.includes('json')) return 'synthetic' as const
       const runs = await r.json()

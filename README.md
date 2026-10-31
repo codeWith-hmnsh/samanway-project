@@ -7,6 +7,9 @@ probabilities of extreme weather, weight maps, and a dashboard that updates ever
 
 Problem statement: SIH 2026 · PS26081 · MoES / NCMRWF.
 
+Team project for Smart India Hackathon 2026. Git history keeps each contributor's commits, including
+Shreyash Neeraj and FrustratedBoy420. Original repository: https://github.com/shreyashsri79/081.
+
 ## Measured results
 
 Held-out verification: each year is scored with weights trained on the other years. WeatherBench 2 forecasts,
@@ -97,7 +100,7 @@ python -m blend.live_regime build-clim       # models/live_regime.nc: ERA5 regim
 
 **Training** (Kaggle, CPU, Internet on): see `KAGGLE_GUIDE.md`. One cell:
 ```
-!git clone -q https://github.com/shreyashsri79/081 && cd 081 && pip install -q gcsfs "zarr>=2.18,<3" && python run_all.py
+!git clone -q https://github.com/codeWith-hmnsh/samanway-project && cd samanway-project && pip install -q gcsfs "zarr>=2.18,<3" && python run_all.py
 ```
 After training, rebuild the live model file, including the extreme-event tables:
 ```

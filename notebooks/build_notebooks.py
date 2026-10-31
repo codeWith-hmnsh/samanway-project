@@ -14,7 +14,7 @@ REPO = "/kaggle/working/repo"
 BRANCH = "main"
 if not os.path.exists(REPO):
     subprocess.run(["git", "clone", "-q", "--depth", "1", "-b", BRANCH,
-                    "https://github.com/shreyashsri79/081", REPO], check=True)
+                    "https://github.com/codeWith-hmnsh/samanway-project", REPO], check=True)
 else:
     subprocess.run(["git", "-C", REPO, "pull", "-q"], check=True)
 sys.path.insert(0, REPO)

@@ -1,0 +1,10 @@
+models/
+notebooks/
+tests/
+*.md
+*.docx
+*.ipynb
+modal_app.py
+make_deck_figures.py
+run_all.py
+start.ps1

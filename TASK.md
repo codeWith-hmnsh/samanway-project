@@ -78,7 +78,7 @@ live IMD heat wave, live regime label, NCUM / NEPS-G adapter, GeoJSON / CSV / Ne
 ## How to run (Kaggle, one cell, Internet ON)
 
 ```
-!rm -rf 081 && git clone -q https://github.com/shreyashsri79/081 && cd 081 && pip install -q gcsfs "zarr>=2.18,<3" && python run_all.py && python run_all.py --set S2 --vars rain
+!rm -rf samanway-project && git clone -q https://github.com/codeWith-hmnsh/samanway-project && cd samanway-project && pip install -q gcsfs "zarr>=2.18,<3" && python run_all.py && python run_all.py --set S2 --vars rain
 ```
 
 Attach the previous run's output (Add Input → Your Work) to reuse downloaded data. Outputs: `/kaggle/working/artifacts/<set>/`.

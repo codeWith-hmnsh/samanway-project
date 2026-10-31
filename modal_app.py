@@ -14,7 +14,7 @@ from pathlib import Path
 
 import modal
 
-REPO_TARBALL = "https://codeload.github.com/shreyashsri79/081/tar.gz/refs/heads/main"
+REPO_TARBALL = "https://codeload.github.com/codeWith-hmnsh/samanway-project/tar.gz/refs/heads/main"
 DATA = Path("/data")
 APP_DIR = "/root/app"
 ROOT = Path(__file__).resolve().parent

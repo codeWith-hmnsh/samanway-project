@@ -492,7 +492,7 @@ Notebook 03 is re-run freely while tuning.
 ```python
 # Kaggle: Settings → Internet ON (01, 02); accelerator None (GPU only for B5b in 03)
 !pip install -q "xarray>=2024.1" "zarr<3" gcsfs dask netcdf4 xesmf scikit-learn xgboost
-!git clone -q https://github.com/shreyashsri79/081 /kaggle/working/repo
+!git clone -q https://github.com/codeWith-hmnsh/samanway-project /kaggle/working/repo
 import sys; sys.path.insert(0, "/kaggle/working/repo")
 import subprocess, json
 COMMIT = subprocess.check_output(["git", "-C", "/kaggle/working/repo", "rev-parse", "HEAD"]).decode().strip()
