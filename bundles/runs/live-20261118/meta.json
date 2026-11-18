@@ -1,7 +1,7 @@
 {
- "id": "live-20261108",
+ "id": "live-20261118",
  "kind": "live",
- "init": "2026-11-08T00:00Z",
+ "init": "2026-11-18T00:00Z",
  "status": "ok",
  "models": [
   "ifs",
@@ -65,37 +65,37 @@
   {
    "name": "fetch ifs 00 UTC Day 1-10",
    "status": "ok",
-   "seconds": 31.52
+   "seconds": 37.09
   },
   {
    "name": "fetch aifs 00 UTC Day 1-10",
    "status": "ok",
-   "seconds": 28.92
+   "seconds": 30.37
   },
   {
    "name": "fetch gfs 00 UTC Day 1-10",
    "status": "ok",
-   "seconds": 13.49
+   "seconds": 11.7
   },
   {
    "name": "fetch ifs 12 UTC 2 m temperature (heat wave)",
    "status": "ok",
-   "seconds": 6.02
+   "seconds": 6.64
   },
   {
    "name": "fetch aifs 12 UTC 2 m temperature (heat wave)",
    "status": "ok",
-   "seconds": 6.66
+   "seconds": 7.22
   },
   {
    "name": "fetch gfs 12 UTC 2 m temperature (heat wave)",
    "status": "ok",
-   "seconds": 24.63
+   "seconds": 7.65
   },
   {
-   "name": "verify 24 earlier forecasts against the IFS analysis; update online weights (B4)",
+   "name": "verify 30 earlier forecasts against the IFS analysis; update online weights (B4)",
    "status": "ok",
-   "seconds": 0.21
+   "seconds": 0.26
   },
   {
    "name": "blend (B4) + extreme probabilities",
@@ -105,22 +105,22 @@
   {
    "name": "write bundle",
    "status": "ok",
-   "seconds": 114.19
+   "seconds": 103.96
   }
  ],
  "provenance": "measured",
  "notes": [
   "Live run: IFS, AIFS, GFS 00 UTC forecasts, averaged onto the 1.5\u00b0 training grid.",
   "Weights start from learned training skill (IFS <- HRES, AIFS <- GraphCast) and move toward each model's own live record as days are verified (B4, ~20-day memory; each model's mean error against the analysis is removed first, so only its random error shapes the weights). GFS has no training counterpart: it starts from HRES skill with 1.5x the error, so it carries little weight until its own verified days accumulate.",
-  "Verified days behind today's weights (mean over cells and leads): t2m 3.6, wind 3.6, mslp 3.6. Rain has no live truth: training prior only.",
+  "Verified days behind today's weights (mean over cells and leads): t2m 10.1, wind 10.1, mslp 10.1. Rain has no live truth: training prior only.",
   "Live truth is the IFS analysis (step 0), which favours IFS; hindcast scorecards use ERA5 / CHIRPS.",
   "Bias correction: IFS uses the HRES seasonal bias; the other models are not bias-corrected.",
   "Rain weights over the sea are equal (rain truth is land only, so there is no learned skill there).",
   "Extremes: each live model votes at its training counterpart's quantile threshold; calibrated on training years for the IFS/AIFS pair.",
-  "Regime of the init day: Normal (same rules and ERA5 2003-2017 climatology as the hindcasts; live proxies: yesterday's Day-1 blended rain and afternoon temperature, today's IFS analysis pressure; z-scores cmz_rain -0.6, nw_rain -0.6, heat_t2m -0.1, bay_mslp_min +0.7). Weights do not depend on it: regime weights gave no held-out gain.",
-  "Live verification t2m (RMSE \u00b0C, Day 1, 11 day(s) vs IFS analysis): blend 0.90, ifs 0.77, aifs 0.96, gfs 1.84.",
-  "Live verification wind (RMSE m/s, Day 1, 11 day(s) vs IFS analysis): blend 0.52, ifs 0.57, aifs 0.52, gfs 1.00.",
-  "Live verification mslp (RMSE hPa, Day 1, 11 day(s) vs IFS analysis): blend 0.60, ifs 0.65, aifs 0.59, gfs 1.58."
+  "Regime of the init day: Normal (same rules and ERA5 2003-2017 climatology as the hindcasts; live proxies: yesterday's Day-1 blended rain and afternoon temperature, today's IFS analysis pressure; z-scores cmz_rain -0.4, nw_rain -0.6, heat_t2m -1.3, bay_mslp_min -2.1). Weights do not depend on it: regime weights gave no held-out gain.",
+  "Live verification t2m (RMSE \u00b0C, Day 1, 21 day(s) vs IFS analysis): blend 0.91, ifs 0.69, aifs 1.00, gfs 1.85.",
+  "Live verification wind (RMSE m/s, Day 1, 21 day(s) vs IFS analysis): blend 0.57, ifs 0.62, aifs 0.58, gfs 1.04.",
+  "Live verification mslp (RMSE hPa, Day 1, 21 day(s) vs IFS analysis): blend 0.63, ifs 0.74, aifs 0.62, gfs 1.66."
  ],
  "extremes": [
   {
@@ -216,9 +216,9 @@
   "nSeason": {},
   "nRegime": {},
   "nOnline": {
-   "t2m": 3.6,
-   "wind": 3.6,
-   "mslp": 3.6,
+   "t2m": 10.1,
+   "wind": 10.1,
+   "mslp": 10.1,
    "rain": 0.0
   },
   "extremeCalibrated": true,
@@ -231,10 +231,10 @@
   ],
   "regime": "normal",
   "regimeZ": {
-   "cmz_rain": -0.56,
-   "nw_rain": -0.59,
-   "heat_t2m": -0.11,
-   "bay_mslp_min": 0.74
+   "cmz_rain": -0.38,
+   "nw_rain": -0.61,
+   "heat_t2m": -1.3,
+   "bay_mslp_min": -2.13
   },
   "regimeMissing": [],
   "uncalibrated": [
@@ -245,6 +245,6 @@
    "heat": "IMD rule per model on 12 UTC 2 m temperature; probability = temperature weights of the models meeting it (uncalibrated)",
    "heat_severe": "IMD rule per model on 12 UTC 2 m temperature; probability = temperature weights of the models meeting it (uncalibrated)"
   },
-  "created": "2026-11-08T16:16:31+00:00"
+  "created": "2026-11-18T18:22:45+00:00"
  }
 }
